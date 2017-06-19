@@ -13,4 +13,9 @@ GLUSTERFS_SOURCE = glusterfs-$(GLUSTERFS_VERSION).tar.gz
 GLUSTERFS_DEPENDENCIES = host-flex host-bison openssl acl
 GLUSTERFS_AUTORECONF=YES
 
-$(eval $(generic-package))
+define GLUSTERFS_RUN_AUTOGEN
+    cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
+endef
+GLUSTERFS_PRE_CONFIGURE_HOOKS += GLUSTERFS_RUN_AUTOGEN
+
+$(eval $(autotools-package))
