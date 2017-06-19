@@ -12,6 +12,7 @@ GLUSTERFS_SITE = https://download.gluster.org/pub/gluster/glusterfs/$(GLUSTERFS_
 GLUSTERFS_SOURCE = glusterfs-$(GLUSTERFS_VERSION).tar.gz
 GLUSTERFS_DEPENDENCIES = host-flex host-bison openssl acl
 GLUSTERFS_CONF_OPTS = --disable-tiering
+GLUSTERFS_CONF_ENV += ac_cv_file__etc_debian_version="/etc/debian_version"
 
 define GLUSTERFS_RUN_AUTOGEN
     cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
