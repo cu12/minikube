@@ -20,7 +20,8 @@ GLUSTERFS_PRE_CONFIGURE_HOOKS += GLUSTERFS_RUN_AUTOGEN
 define GLUSTERFS_CONFIGURE_CMDS
   cd $(@D) && PATH=$(BR_PATH) \
   LDFLAGS="$(HOST_LDFLAGS)" \
-  ./configure
+  ./configure \
+    --includedir=$(STAGING_DIR)
 endef
 
 define GLUSTERFS_BUILD_CMDS
