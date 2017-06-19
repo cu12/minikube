@@ -12,7 +12,7 @@ GLUSTERFS_SITE = https://download.gluster.org/pub/gluster/glusterfs/$(GLUSTERFS_
 GLUSTERFS_SOURCE = glusterfs-$(GLUSTERFS_VERSION).tar.gz
 GLUSTERFS_DEPENDENCIES = acl openssl liburcu sqlite
 GLUSTERFS_INSTALL_STAGING = YES
-
+GLUSTERFS_INSTALL_STAGING_OPTS = DESTDIR=$(STAGING_DIR) LDFLAGS=-L$(STAGING_DIR)/usr/lib install
 
 GLUSTERFS_CONF_ENV = \
   ac_cv_file__etc_debian_version=no \
