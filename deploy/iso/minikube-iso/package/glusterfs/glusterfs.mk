@@ -21,7 +21,7 @@ define GLUSTERFS_CONFIGURE_CMDS
   cd $(@D) && PATH=$(BR_PATH) \
   LDFLAGS="$(HOST_LDFLAGS)" \
   ./configure \
-    --includedir=$(STAGING_DIR)
+    --includedir=$(STAGING_DIR)/usr/include
 endef
 
 define GLUSTERFS_BUILD_CMDS
