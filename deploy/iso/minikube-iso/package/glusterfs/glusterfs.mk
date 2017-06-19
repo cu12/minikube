@@ -23,4 +23,3 @@ endef
 GLUSTERFS_PRE_CONFIGURE_HOOKS += GLUSTERFS_RUN_AUTOGEN
 
 $(eval $(autotools-package))
-$(eval $(host-autotools-package))
