@@ -5,7 +5,7 @@
 ################################################################################
 
 GLUSTERFS_VERSION = 3.11.0
-GLUSTERFS_SITE = https://download.gluster.org/pub/gluster/glusterfs/$(GLUSTERFS_VERSION%.*)/$(GLUSTERFS_VERSION)
+GLUSTERFS_SITE = https://download.gluster.org/pub/gluster/glusterfs/v${GLUSTERFS_VERSION%.*}/$(GLUSTERFS_VERSION)
 GLUSTERFS_SOURCE = glusterfs-$(GLUSTERFS_VERSION).tar.gz
 
 define GLUSTERFS_AUTOGEN
