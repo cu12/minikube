@@ -3,4 +3,5 @@ config BR2_PACKAGE_GLUSTERFS
   default y
   depends on BR2_x86_64
   select BR2_PACKAGE_ACL
+  select BR2_PACKAGE_LIBURCU
   select BR2_PACKAGE_OPENSSL
