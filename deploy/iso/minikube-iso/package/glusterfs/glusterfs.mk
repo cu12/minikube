@@ -19,7 +19,7 @@ GLUSTERFS_PRE_CONFIGURE_HOOKS += GLUSTERFS_RUN_AUTOGEN
 
 define GLUSTERFS_CONFIGURE_CMDS
   (cd $(@D); \
-    ./configure
+    ./configure \
   )
 endef
 
