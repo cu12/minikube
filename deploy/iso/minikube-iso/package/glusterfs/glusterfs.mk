@@ -12,17 +12,18 @@ GLUSTERFS_VERSION = $(GLUSTERFS_MAJOR).$(GLUSTERFS_MINOR).$(GLUSTERFS_BUILD)
 GLUSTERFS_SITE = https://download.gluster.org/pub/gluster/glusterfs/$(GLUSTERFS_MAJOR).$(GLUSTERFS_MINOR)/$(GLUSTERFS_VERSION)
 GLUSTERFS_SOURCE = glusterfs-$(GLUSTERFS_VERSION).tar.gz
 
-define GLUSTERFS_AUTOGEN
-    cd $(@D)/glusterfs-$(GLUSTERFS_VERSION); ./autogen.sh
+define GLUSTERFS_RUN_AUTOGEN
+    cd $(@D) && PATH=$(BR_PATH) ./autogen.sh
 endef
+GLUSTERFS_PRE_CONFIGURE_HOOKS += GLUSTERFS_RUN_AUTOGEN
 
 define GLUSTERFS_BUILD_CMDS
-  $(MAKE)
+  $(TARGET_CONFIGURE_OPTS) -C $(@D)/glusterfs
 endef
 
 define GLUSTERFS_
   $(INSTALL) -D -m 0755 \
-    $(@D)/glusterfs-$(GLUSTERFS_VERSION) \
+    $(@D)/glusterfs \
     $(TARGET_DIR)/usr/sbin/glusterfs
 endef
 
