@@ -11,8 +11,6 @@ GLUSTERFS_VERSION = $(GLUSTERFS_MAJOR).$(GLUSTERFS_MINOR).$(GLUSTERFS_BUILD)
 GLUSTERFS_SITE = https://download.gluster.org/pub/gluster/glusterfs/$(GLUSTERFS_MAJOR).$(GLUSTERFS_MINOR)/$(GLUSTERFS_VERSION)
 GLUSTERFS_SOURCE = glusterfs-$(GLUSTERFS_VERSION).tar.gz
 GLUSTERFS_DEPENDENCIES = acl openssl liburcu sqlite
-GLUSTERFS_AUTORECONF = YES
-LIBSIGROK_AUTORECONF_OPTS += -V
 
 GLUSTERFS_CONF_ENV = \
   ac_cv_file__etc_debian_version=no \
@@ -24,4 +22,4 @@ define GLUSTERFS_RUN_AUTOGEN
 endef
 GLUSTERFS_PRE_CONFIGURE_HOOKS += GLUSTERFS_RUN_AUTOGEN
 
-$(eval $(autotools-package))
+$(eval $(host-autotools-package))
