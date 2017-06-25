@@ -18,17 +18,15 @@ metadata:
   name: default-http-backend
   namespace: kube-system
   labels:
-    addonmanager.kubernetes.io/mode: Reconcile
+    addonmanager.kubernetes.io/mode: EnsureExists
 spec:
   replicas: 1
   selector:
     app: default-http-backend
-    addonmanager.kubernetes.io/mode: Reconcile
   template:
     metadata:
       labels:
         app: default-http-backend
-        addonmanager.kubernetes.io/mode: Reconcile
     spec:
       terminationGracePeriodSeconds: 60
       containers:
@@ -62,18 +60,16 @@ metadata:
   namespace: kube-system
   labels:
     app: nginx-ingress-controller
-    addonmanager.kubernetes.io/mode: Reconcile
+    addonmanager.kubernetes.io/mode: EnsureExists
 spec:
   replicas: 1
   selector:
     app: nginx-ingress-controller
-    addonmanager.kubernetes.io/mode: Reconcile
   template:
     metadata:
       labels:
         app: nginx-ingress-controller
         name: nginx-ingress-controller
-        addonmanager.kubernetes.io/mode: Reconcile
     spec:
       terminationGracePeriodSeconds: 60
       containers:
@@ -106,6 +102,8 @@ spec:
           hostPort: 80
         - containerPort: 443
           hostPort: 443
+        - containerPort: 6001
+          hostPort: 6001
         # we expose 18080 to access nginx stats in url /nginx-status
         # this is optional
         - containerPort: 18080
@@ -114,3 +112,4 @@ spec:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
         - --configmap=$(POD_NAMESPACE)/nginx-load-balancer-conf
+        - --tcp-services-configmap=$(POD_NAMESPACE)/ingress-tcp-conf

@@ -20,4 +20,15 @@ metadata:
   name: nginx-load-balancer-conf
   namespace: kube-system
   labels:
-    addonmanager.kubernetes.io/mode: Reconcile
+    addonmanager.kubernetes.io/mode: EnsureExists
+---
+apiVersion: v1
+data:
+  6001: "default/dashboard:6001"
+kind: ConfigMap
+metadata:
+  name: ingress-tcp-conf
+  namespace: kube-system
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+
